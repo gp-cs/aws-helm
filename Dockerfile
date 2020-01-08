@@ -3,7 +3,9 @@ FROM python:alpine
 ARG CLI_VERSION=1.16.310
 
 RUN apk -uv add --no-cache groff jq less && \
-    pip install --no-cache-dir awscli==$CLI_VERSION
+    pip install --no-cache-dir awscli==$CLI_VERSION && \
+    wget https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator && \
+    mv aws-iam-authenticator /usr/local/bin/
 
 ARG VERSION=2.15.2
 
